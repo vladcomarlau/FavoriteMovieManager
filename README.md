@@ -51,3 +51,8 @@ Frontend:</br>
 5. Run "npm i"
 6. Run "npm start"
 7. If web browser did not appear navigate to localhost:3000/
+
+## Screenshot
+<img width="571" alt="1" src="https://github.com/vladcomarlau/FavouriteMovieManager/assets/102293760/136de71d-b11e-4cb0-99a8-feec5102fd40">
+<img width="571" alt="2" src="https://github.com/vladcomarlau/FavouriteMovieManager/assets/102293760/41423211-400c-41d7-a294-d99a5f91da74">
+<img width="571" alt="3" src="https://github.com/vladcomarlau/FavouriteMovieManager/assets/102293760/9fe8f292-8475-40e1-8126-2927308404c8">
