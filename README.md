@@ -47,7 +47,7 @@ Frontend:</br>
 1. Open a terminal in the root directory
 2. Run "npm i"
 3. Run "npm run dev"
-4. Open a second terminal in the spa directory located in the root directory
+4. Open a second terminal in root->spa folder
 5. Run "npm i"
 6. Run "npm start"
 7. If web browser did not appear navigate to localhost:3000/
