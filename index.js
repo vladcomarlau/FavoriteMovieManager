@@ -1,28 +1,48 @@
 const express = require('express');
+var cors = require('cors');
 const app = express();
-const path = require("path");
-const sqlite3 = require('sqlite3').verbose();
-require("dotenv").config();
-var movie = require('./movie.js');
-var tvShow = require('./tvShow.js');
+app.use(cors());
 
-let db = new sqlite3.Database('./db/appDb.db', (err) => {
-    if (err) {
-      console.error(err.message);
-    }else{
-        console.log('Connected to the database.');
-    }
+require("dotenv").config();
+
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize({
+    dialect: "sqlite",
+    storage: 'database/database.sqlite',
+    logging: false
 });
 
-app.use("/static",express.static(path.join(__dirname, "static")));
+//sincronizare modele   parametru {force:true} pt resetare
+sequelize.sync().then(() => {
+    console.log('Models successfully (re)created');
+}).catch((err) => {
+    console.warn('Error creating models');
+    console.warn(err);
+});
+module.exports = {
+    sequelize
+};
+ 
+const bodyParser = require('body-parser');
+const list = require('./database/models/list');
+const movie = require('./database/models/movie');
 
-app.get('/', function (req, res) {
-    film1 = new movie(1,"vlad");
-    serial1 = new tvShow(1,"vladdddd");
-    res.send(film1.name + " " + serial1.name);
-})
+//  many to many relationship
+//  a list has multiple movies
+//  a movie is part of a list
+list.hasMany(movie,{as: 'movies' });
+movie.belongsTo(list,{ foreignKey: 'ListId', as: 'movie' });
+
+app.use(bodyParser.json());
+
+//routes
+const listRoutes = require('./routes/listRoutes');
+const singleListRoutes = require('./routes/singleListRoutes');
+
+const movieRoutes = require('./routes/movieRoutes');
+app.use('/lists', listRoutes);
+app.use('/list', singleListRoutes);
+app.use('/addlist', singleListRoutes);
+app.use('/movies', movieRoutes);
+
 app.listen(process.env.PORT);
-
-
-//am ramas sa fac ORM (prin care nu mai e nevoie sa 
-//interactionez cu SQLite ca sa salvez obiecte in el)
