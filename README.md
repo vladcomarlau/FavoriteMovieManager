@@ -24,8 +24,8 @@ Faculty project for the Web Technologies course.
 
 ## Specifications
 Backend:
+- Web server using NODEjs (running on port 8000)
 - RESTful APIs (CRUD operations exposed for database tables)
-- Web server using NODEjs
   - using Router in order to execute CRUD operations for each table separately
 - Database using Sequelize (SQLite dialect):
   - 2 entities:
@@ -36,7 +36,7 @@ Backend:
 - Integrated with external service - TMDB API using node-fetch, JSON authenticated
 
 Frontend:</br>
-- Single Page Application
+- Single Page Application (running on port 3000)
 - Made with React.js
   - Used React Router in order to separate different UI parts lke different lists and add / remove, search functionalities 
 - Functionalities:
