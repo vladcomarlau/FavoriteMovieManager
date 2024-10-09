@@ -1,7 +1,7 @@
-# Favourite Movie Manager
+# Favorite Movie Manager
  
 ## Project description
-Favourite movie manager single page web application with TMDB integration. </br>
+Favorite movie manager single page web application with TMDB integration. </br>
 Faculty project for the Web Technologies course.
 <table>
  <tr>
